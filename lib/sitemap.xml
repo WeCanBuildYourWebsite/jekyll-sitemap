@@ -26,10 +26,12 @@
     </url>
   {% endfor %}
 
-  {% for file in page.static_files %}
+  {% if site.sitemap.static_files != false %}
+    {% for file in page.static_files %}
     <url>
       <loc>{{ file.path | absolute_url }}</loc>
       <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>
     </url>
-  {% endfor %}
+    {% endfor %}
+  {% endif %}
 </urlset>
